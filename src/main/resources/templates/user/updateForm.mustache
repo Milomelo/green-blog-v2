@@ -5,18 +5,31 @@
 
     <!-- 회원수정 폼 시작 -->
     <form>
+        <input id="id" type="hidden" value="{{user.id}}">
+
         <div class="mb-3 mt-3">
-            <input type="text" class="form-control" value="유저네임" readonly>
+            <input id="username" type="text" class="form-control" value="{{user.username}}" readonly>
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" value="패스워드" required>
+            <input id="password" type="password" class="form-control" value="{{user.password}}" maxlength="12" required>
         </div>
         <div class="mb-3">
-            <input type="email" class="form-control" value="이메일" required>
+            <input id="email" type="email" class="form-control" value="{{user.email}}" maxlength="30" required>
         </div>
-        <button type="button" class="btn btn-secondary">수정완료</button>
+        <div class="mb-3">
+            <input id="addr" type="text" class="form-control" value="{{user.addr}}" required maxlength="300">
+        </div>
+        <button id="btn-update" type="button" class="btn btn-secondary">수정완료</button>
     </form>
     <!-- 회원수정 폼 끝 -->
+
+</div>
+<!-- 컨테이너 끝 -->
+
+<script src="/js/user.js"></script>
+{{> /layout/footer}}
+</form>
+<!-- 회원수정 폼 끝 -->
 
 </div>
 <!-- 컨테이너 끝 -->
