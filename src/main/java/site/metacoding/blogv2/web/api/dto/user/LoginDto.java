@@ -13,4 +13,6 @@ import site.metacoding.blogv2.domain.user.User;
 public class LoginDto {
     private String username;
     private String password;
+    private String remember;
+
 }

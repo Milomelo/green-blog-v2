@@ -21,7 +21,7 @@ async function join() {
     }
 
     // (2) fetch 요청한다. (json으로 변환해서)
-    let response = await fetch("/api/join", {
+    let response = await fetch("/join", {
         method: "POST",
         body: JSON.stringify(joinDto),
         headers: {
@@ -44,15 +44,17 @@ async function join() {
 async function login() {
     let loginDto = {
         username: $("#username").val(),
-        password: $("#password").val()
+        password: $("#password").val(),
+        remember: checked ? "on" : "off"
+
     }
 
-    let response = await fetch("/api/login", {
+    let response = await fetch("/login", {
         method: "POST",
         body: JSON.stringify(loginDto),
         headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
+            'Content-Type': 'application/json; charset=utf-8',
+        }
     });
     let responseParse = await response.json();
     console.log(responseParse);
@@ -64,3 +66,10 @@ async function login() {
         alert('로그인실패');
     }
 } 
+
+function usernameRemember() {
+    let cookies = document.cookie.split("=");
+    //console.log(cookies[1]);
+    $("#username").val(cookies[1]);
+}
+usernameRemember();
