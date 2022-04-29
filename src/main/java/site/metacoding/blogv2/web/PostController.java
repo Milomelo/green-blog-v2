@@ -15,4 +15,10 @@ public class PostController {
     public String home() {
         return "post/list";
     }
+
+    @GetMapping("/s/post/writeForm")
+    public String writeForm() {
+        return "post/writeForm";
+    }
+
 }
