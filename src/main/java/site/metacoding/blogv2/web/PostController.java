@@ -1,9 +1,12 @@
 package site.metacoding.blogv2.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.blogv2.domain.post.Post;
 import site.metacoding.blogv2.service.PostService;
 
 @RequiredArgsConstructor
@@ -19,6 +22,13 @@ public class PostController {
     @GetMapping("/s/post/writeForm")
     public String writeForm() {
         return "post/writeForm";
+    }
+
+    @GetMapping("/post/{id}")
+    public String detail(@PathVariable Integer id, Model model) {
+        Post postEntity = postService.글상세보기(id);
+        model.addAttribute("post", postEntity);
+        return "post/detail";
     }
 
 }

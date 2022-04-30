@@ -1,5 +1,7 @@
 package site.metacoding.blogv2.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -28,6 +30,16 @@ public class PostService {
     public Page<Post> 게시글목록(Integer page) {
         PageRequest pq = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
         return postRepository.findAll(pq);
+    }
+
+    public Post 글상세보기(Integer id) {
+        Optional<Post> postOp = postRepository.findById(id);
+
+        if (postOp.isPresent()) {
+            return postOp.get();
+        } else {
+            throw new RuntimeException("해당 게시글을 찾을 수 없습니다");
+        }
     }
 
 }
