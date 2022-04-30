@@ -35,8 +35,8 @@ public class UserController {
 
     @GetMapping("/s/user/{id}")
     public String userInfo(@PathVariable Integer id, Model model) {
-        User userEntity = userService.회원정보(id);
-        model.addAttribute("user", userEntity);
+        // User userEntity = userService.회원정보(id);
+        // model.addAttribute("user", userEntity);
         return "user/updateForm";
     }
 
