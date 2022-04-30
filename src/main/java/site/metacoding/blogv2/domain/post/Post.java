@@ -44,6 +44,7 @@ public class Post { // N (드라이빙 테이블, FK의 주인)
     @Column(nullable = false)
     private String content;
 
+    @JsonIgnoreProperties({ "password" })
     @JoinColumn(name = "userId")
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
